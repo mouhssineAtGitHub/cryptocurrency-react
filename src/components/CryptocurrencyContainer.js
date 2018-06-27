@@ -9,7 +9,7 @@ class CryptocurrencyContainer extends Component {
 
   constructor(props) {    
     super(props);
-    const data = [];
+    this.data = [];
 		this.state = {
       coins: [],
       inputValue:'',
@@ -37,20 +37,18 @@ class CryptocurrencyContainer extends Component {
   sortByRank(){
     const currentCoins = this.state.coins.slice(0);
     if(this.state.sortRank === 'fa fa-arrow-up'){  
-      this.setState({sortRank:"fa fa-arrow-down"});
-      this.setState({ coins: currentCoins.sort((a, b) => Number(a.rank) - Number(b.rank)) }); 
+      // this.setState({sortRank:"fa fa-arrow-down"});
+      this.setState({ sortRank:"fa fa-arrow-down", coins: currentCoins.sort((a, b) => Number(a.rank) - Number(b.rank)) }); 
     }
     else{
-      this.setState({sortRank:"fa fa-arrow-up"});
-      this.setState({ coins: currentCoins.sort((a, b) => Number(b.rank) - Number(a.rank)) });
+      this.setState({sortRank:"fa fa-arrow-up", coins: currentCoins.sort((a, b) => Number(b.rank) - Number(a.rank)) });
     }
   }
 
   sortByName(){
     const currentCoins = this.state.coins.slice(0);
     if(this.state.sortName === 'fa fa-arrow-up'){  
-      this.setState({sortName:"fa fa-arrow-down"});
-      this.setState({ coins: currentCoins.sort(function (a, b) {
+      this.setState({ sortName:"fa fa-arrow-down", coins: currentCoins.sort(function (a, b) {
           if (a.name.toUpperCase() < b.name.toUpperCase()) return -1;
           else if (a.name.toUpperCase() > b.name.toUpperCase()) return 1;
           return 0;
@@ -72,12 +70,10 @@ class CryptocurrencyContainer extends Component {
   sortByPrice(){
     const currentCoins = this.state.coins.slice(0);
     if(this.state.sortPrice === 'fa fa-arrow-up'){  
-      this.setState({sortPrice:"fa fa-arrow-down"});
-      this.setState({ coins: currentCoins.sort((a, b) => Number(a.price_usd) - Number(b.price_usd)) }); 
+      this.setState({ sortPrice:"fa fa-arrow-down",coins: currentCoins.sort((a, b) => Number(a.price_usd) - Number(b.price_usd)) }); 
     }
     else{
-      this.setState({sortPrice:"fa fa-arrow-up"});
-      this.setState({ coins: currentCoins.sort((a, b) => Number(b.price_usd) - Number(a.price_usd)) });
+      this.setState({ sortPrice:"fa fa-arrow-up",coins: currentCoins.sort((a, b) => Number(b.price_usd) - Number(a.price_usd)) });
     }
 
   }
